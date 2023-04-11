@@ -1,6 +1,7 @@
-import Script from 'next/script'
+import { Metadata } from 'next'
 import { Fira_Sans } from 'next/font/google'
 import './globals.css'
+
 
 //* font
 const Fira = Fira_Sans({ 
@@ -11,7 +12,7 @@ const Fira = Fira_Sans({
 
 })
 // * Metadata - head tag
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Best of Python',
   description: 'Find out what\' trending, or get inspired by open source projects.',
 }
