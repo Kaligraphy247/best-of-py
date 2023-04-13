@@ -1,10 +1,16 @@
 import Link from "next/link";
-
+import Image from "next/image";
 export default function CustomHeader() {
   return (
     <div className="mx-auto p-3 flex border space-x-8">
       <Link href={"/"} className="flex">
-        <img src="/python-logo.svg" className="h-8 mr-3" alt="Logo" />
+        <Image
+          src="/python-logo.svg"
+          className="h-8 mr-3"
+          alt="Logo"
+          width={48}
+          height={48}
+        />
         <span className="self-center text-lg md:text-2xl font-semibold whitespace-nowrap dark:text-white">
           Best of Python
         </span>
