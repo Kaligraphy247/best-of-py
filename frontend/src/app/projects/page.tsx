@@ -66,34 +66,37 @@ export default function Projects() {
     <main className="min-h-screen relative">
       <CustomHeader />
       <div className="mt-8 md:mx-12 lg:mx-40 xl:mx-72 bg-gray-50">
-        {data.map(
-          ({
-            title,
-            projectUrl,
-            imageSrc,
-            altText,
-            githubUrl,
-            projectWebsite,
-            pypiUrl,
-            description,
-            tags,
-          }) => (
-            <ProjectItem
-              key={title}
-              Item={{
-                title,
-                projectUrl,
-                imageSrc,
-                altText,
-                githubUrl,
-                projectWebsite,
-                pypiUrl,
-                description,
-                tags,
-              }}
-            />
-          )
-        )}
+        <ul className="border-t border-l border-r">
+          {data.map(
+            ({
+              title,
+              projectUrl,
+              imageSrc,
+              altText,
+              githubUrl,
+              projectWebsite,
+              pypiUrl,
+              description,
+              tags,
+            }) => (
+              <ProjectItem
+                key={title}
+                Item={{
+                  title,
+                  projectUrl,
+                  imageSrc,
+                  altText,
+                  githubUrl,
+                  projectWebsite,
+                  pypiUrl,
+                  description,
+                  tags,
+                }}
+              />
+            )
+          )}
+        </ul>
+
         <CustomFooter />
       </div>
     </main>
