@@ -23,8 +23,8 @@ type ProjectProps = {
 
 export default function ProjectItem({ Item }: ProjectProps) {
   return (
-    <ul className="">
-      <li className="border border-blue-300 flex mx-2 px-3 py-4 mb-4 shadow-sm drop-shadow-lg bg-blue-300 md:bg-green-300 md:mx-0">
+    <>
+      <li className="border-b border-dashed border-gray-300 flex mx-0 px-3 py-4 mb-0 shadow-sm drop-shadow-lg">
         {/* //* logo/image */}
         {Item.imageSrc !== "" ||
         undefined ||
@@ -144,6 +144,6 @@ export default function ProjectItem({ Item }: ProjectProps) {
           </div>
         </div>
       </li>
-    </ul>
+    </>
   );
 }

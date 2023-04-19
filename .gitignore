@@ -40,3 +40,4 @@ frontend/package-lock.json
 
 # vscode
 **.vscode
+frontend/restore.py
