@@ -11,18 +11,18 @@ import { readFileSync } from "fs";
  * Contains README from Github, for a project.
  */
 export default function ProjectReadmeSection() {
-  const markdown = readFileSync("/Users/James/Downloads/README.md", {
-    // const markdown = readFileSync("./README.md", {
-    encoding: "utf-8",
-  });
+  // const markdown = readFileSync("/Users/James/Downloads/README.md", {
+  //   // const markdown = readFileSync("./README.md", {
+  //   encoding: "utf-8",
+  // });
   // console.log(markdown);
 
-  // const markdown = `Here is some JavaScript code:
+  const markdown = `Here is some JavaScript code:
 
-  // ~~~js
-  // console.log('It works!')
-  // ~~~
-  // `;
+  ~~~js
+  console.log('It works!')
+  ~~~
+  `;
 
   return (
     <div className="border-t mt-8 ">
