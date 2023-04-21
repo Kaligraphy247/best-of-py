@@ -9,8 +9,8 @@ import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import styles from "../components/ProjectReadme.module.css";
 
 type ReadmeMarkdownComponentProps = {
-  markdownString: string
-}
+  markdownString: string;
+};
 
 const markdown = `Here is some JavaScript code:
 ~~~js
@@ -20,18 +20,20 @@ console.log('It works!')
 
 /**
  * #### Markdown Component
- * 
+ *
  * Renders the Markdown string provided, contains settings for
- * customizing what is rendered. 
+ * customizing what is rendered.
  */
-export default function ReadmeMarkdownComponent({markdownString}: ReadmeMarkdownComponentProps) {
+export default function ReadmeMarkdownComponent({
+  markdownString,
+}: ReadmeMarkdownComponentProps) {
   return (
     <div className="">
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkToc]}
         // linkTarget={"_self"}
         // transformLinkUri={(href, children, title) => ""}
-        children={markdownString}
+        // children={markdownString}
         className={styles["markdown-body"]}
         components={{
           code({ node, inline, className, children, ...props }) {
@@ -39,13 +41,13 @@ export default function ReadmeMarkdownComponent({markdownString}: ReadmeMarkdown
             return !inline && match ? (
               <SyntaxHighlighter
                 {...props}
-                children={String(children).replace(/\n$/, "")}
+                // children={String(children).replace(/\n$/, "")}
                 style={dracula}
                 language={match[1]}
                 PreTag="div"
                 // showLineNumbers // * unnecessary in this context
                 // showInlineLineNumbers
-              />
+              >{String(children).replace(/\n$/, "")}</SyntaxHighlighter>
             ) : (
               <code {...props} className={className}>
                 {children}
@@ -53,7 +55,9 @@ export default function ReadmeMarkdownComponent({markdownString}: ReadmeMarkdown
             );
           },
         }}
-      />
+      >
+        {markdownString}
+      </ReactMarkdown>
     </div>
   );
 }

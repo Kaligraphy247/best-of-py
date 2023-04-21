@@ -17,7 +17,7 @@ type ProjectMetadataProps = {
 // * Dynamically generated Metadata - head tag
 export async function generateMetadata(
   { params, searchParams }: ProjectMetadataProps,
-  parent?: ResolvingMetadata
+  // parent?: ResolvingMetadata
 ): Promise<Metadata> {
   // store route params
   const projectName = params.project;

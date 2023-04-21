@@ -13,7 +13,7 @@ type TagMetadataProps = {
 // * Dynamically generated Metadata - head tag
 export async function generateMetadata(
   { params, searchParams }: TagMetadataProps,
-  parent?: ResolvingMetadata
+  // parent?: ResolvingMetadata
 ): Promise<Metadata> {
   // store route params
   const tagName = params.tag;
