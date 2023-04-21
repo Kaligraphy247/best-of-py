@@ -4,9 +4,9 @@ import ProjectItem from "../components/project-item";
 
 export default function Projects() {
   const example = [
-    { tag: "GUI", tagUrl: "/GUI-URL" },
-    { tag: "Numpy", tagUrl: "/Numpy-URL" },
-    { tag: "Django", tagUrl: "/Django-URL" },
+    { tag: "GUI", tagUrl: "GUI-URL" },
+    { tag: "Numpy", tagUrl: "Numpy-URL" },
+    { tag: "Django", tagUrl: "Django-URL" },
   ];
   const example2: any = [];
 
@@ -65,8 +65,8 @@ export default function Projects() {
   return (
     <main className="min-h-screen relative">
       <CustomHeader />
-      <div className="mt-8 md:mx-12 lg:mx-40 xl:mx-72 bg-gray-50">
-        <ul className="border-t border-l border-r">
+      <div className="mx-4 mt-8 md:mx-12 lg:mx-40 xl:mx-72 bg-gray-50">
+        <ul className="border">
           {data.map(
             ({
               title,
@@ -96,7 +96,6 @@ export default function Projects() {
             )
           )}
         </ul>
-
         <CustomFooter />
       </div>
     </main>

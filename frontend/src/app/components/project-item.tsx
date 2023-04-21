@@ -1,3 +1,5 @@
+
+
 import Image from "next/image";
 import { FaHome } from "react-icons/fa";
 import Link from "next/link";
@@ -21,10 +23,13 @@ type ProjectProps = {
   };
 };
 
+/**
+Renders a section for a single Project
+*/
 export default function ProjectItem({ Item }: ProjectProps) {
   return (
     <>
-      <li className="border-b border-dashed border-gray-300 flex mx-0 px-3 py-4 mb-0 shadow-sm drop-shadow-lg">
+      <li className="border-b border-dashed border-gray-300 flex mx-0 px-3 py-4 mb-0 shadow-sm drop-shadow-lg last:border-b-0">
         {/* //* logo/image */}
         {Item.imageSrc !== "" ||
         undefined ||

@@ -91,7 +91,7 @@ export default function SingleProject() {
               </span>
               <span className="border py-1 px-2 rounded-lg flex">
                 <Link href={""} target="_blank" className="flex line-clamp-1 self-center text-[0.9rem]">
-                    <FaHome />
+                    <FaHome size={18}/>
                     <p className="pl-4">Website Name</p>
                 </Link>
               </span>
@@ -100,10 +100,10 @@ export default function SingleProject() {
                   <Image
                     src="/pypi.svg"
                     alt="pypi-logo"
-                    width={16}
+                    width={20}
                     height={16}
                   />
-                  <p className="pl-4">pypi link name</p>
+                  <p className="pl-3">pypi link name</p>
                 </Link>
               </span>
             </div>

@@ -8,9 +8,9 @@ export default function ProjectPypiSection() {
       <div className="py-2 pl-3 flex border-b">
         <Image src={"/pypi.svg"} alt="github logo" width={24} height={24} />
         <h2 className="pl-3 flex self-center">
-          Library on &nbsp;
+          Library on 
           <Link href="https://pypi.org" className="hover:underline">
-            Pypi
+            &nbsp;Pypi
           </Link>
         </h2>
       </div>

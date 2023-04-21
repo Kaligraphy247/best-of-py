@@ -18,12 +18,6 @@ export default function ProjectReadmeSection() {
   // ~~~
   // `;
 
-  const md = `Here is a list:
-  
-  - one
-  - two
-  - three
-  `
   return (
     <div className="border-t mt-8 ">
       <div className="py-2 pl-3 flex border-b">
