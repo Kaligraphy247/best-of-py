@@ -3,7 +3,13 @@ import { FaReadme } from "react-icons/fa";
 import ReadmeMarkdownComponent from "./markdown-component";
 import { readFileSync } from "fs";
 
-
+/**
+ * #### Project Github Component
+ * 
+ * Found in single-project component, the Github section.
+ * 
+ * Contains README from Github, for a project.
+ */
 export default function ProjectReadmeSection() {
   const markdown = readFileSync("/Users/James/Downloads/README.md", {
     // const markdown = readFileSync("./README.md", {

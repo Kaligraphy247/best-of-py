@@ -18,6 +18,12 @@ console.log('It works!')
 ~~~
 `;
 
+/**
+ * #### Markdown Component
+ * 
+ * Renders the Markdown string provided, contains settings for
+ * customizing what is rendered. 
+ */
 export default function ReadmeMarkdownComponent({markdownString}: ReadmeMarkdownComponentProps) {
   return (
     <div className="">

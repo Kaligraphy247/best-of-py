@@ -4,6 +4,14 @@ import { FiGitCommit } from "react-icons/fi";
 import { BsPeopleFill } from "react-icons/bs";
 import Link from "next/link";
 
+/**
+ * #### Project Github Component
+ * 
+ * Found in single-project component, the Github section.
+ * 
+ * Contains Github stats, charts, and anything related to github stats
+ * for a project.
+ */
 export default function ProjectGitHubSection() {
   return (
     <div className="border-b border-t mt-8">

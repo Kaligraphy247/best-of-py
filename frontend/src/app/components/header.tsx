@@ -1,5 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+
+
+/**
+ * #### Custom Header Component
+ */
 export default function CustomHeader() {
   return (
     <div className="mx-auto p-3 flex border space-x-8">

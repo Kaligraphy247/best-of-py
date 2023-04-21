@@ -45,7 +45,9 @@ export async function generateMetadata(
   };
 }
 
-
+/**
+ * #### SingleProject Component
+ */
 export default function SingleProject() {
   return (
     // <div>

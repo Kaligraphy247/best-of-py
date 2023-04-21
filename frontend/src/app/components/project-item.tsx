@@ -24,7 +24,8 @@ type ProjectProps = {
 };
 
 /**
-Renders a section for a single Project
+  * #### Project Item
+  * Renders a section for a single Project
 */
 export default function ProjectItem({ Item }: ProjectProps) {
   return (

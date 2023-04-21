@@ -2,6 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { TbExternalLink } from "react-icons/tb";
 
+
+/**
+ * #### Project PyPi Section Component
+ * 
+ * Contains PyPi stats, charts and anything related to PyPi stats for
+ * for a project.
+ */
 export default function ProjectPypiSection() {
   return (
     <div className="border-b border-t mt-8">
