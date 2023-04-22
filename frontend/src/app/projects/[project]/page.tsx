@@ -35,7 +35,7 @@ export default function Project({
   params,
   searchParams,
 }: ProjectMetadataProps ) {
-  console.log(params.project)
+  // console.log(params.project)
 // export default function Project({Item}: ProjectProps) {
 
 
