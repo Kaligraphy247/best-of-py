@@ -3,8 +3,6 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  // output: "export",
-  // distDir: 'dist' // redundant
   images: { unoptimized: true },
 };
 
