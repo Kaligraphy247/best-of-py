@@ -9,24 +9,6 @@ type ProjectMetadataProps = {
   searchParams: { [key: string]: [string | string[] | undefined] };
 };
 
-type ProjectProps = {
-  Item: {
-    title: string;
-    projectUrl: string;
-    imageSrc: string;
-    altText: string;
-    githubUrl: string;
-    projectWebsite: string;
-    pypiUrl: string;
-    description?: string;
-    tags?:
-      | {
-          tag: string;
-          tagUrl: string;
-        }[]
-      | undefined;
-  };
-};
 
 // * Dynamically generated Metadata - head tag
 export async function generateMetadata(
