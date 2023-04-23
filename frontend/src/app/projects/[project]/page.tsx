@@ -101,7 +101,7 @@ const data = [
   return (
     <main>
       <CustomHeader />
-      <div className="border-l border-r mx-4 mt-0 mb-12 md:mx-12 lg:mx-40 xl:mx-72 bg-gray-50">
+      <div className="border-l border-r border-t rounded mx-4 mt-8 mb-12 md:mx-12 lg:mx-40 xl:mx-72 bg-gray-50">
         <div className="border-b">
 
           <SingleProject />

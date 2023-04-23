@@ -27,9 +27,9 @@ export default function ProjectGitHubSection() {
         </h2>
       </div>
       <div className="border-b border-dashed">
-        <div className="grid grid-cols-2 mx-4 my-3 space-y-2">
+        <div className="grid grid-cols-2 mx-4 my-3 space-y-2 space-x-4 md:space-x-2">
           <div>
-            <Link href="" className="text-blue-500 flex pt-2">
+            <Link href="" className="text-blue-500 flex pt-2 line-clamp-1">
               averylonglinkaverylonglink
               <span className="pt-0.5">
                 <TbExternalLink />
@@ -42,7 +42,7 @@ export default function ProjectGitHubSection() {
               <div className="pt-[0.20rem]">
                 <BsPeopleFill />
               </div>
-              <p className="pl-2">9 contributors</p>
+              <p className="pl-0">9 contributors</p>
             </div>
           </div>
           <div>
@@ -57,7 +57,7 @@ export default function ProjectGitHubSection() {
       </div>
 
       {/* chart area */}
-      <div className="border-b border-dashed">
+      <div className="border-b border-dashed hidden md:block">
         <div className="w-full h-[14rem]">
           <div className="justify-center flex">
             <p className="border border-dashed p-1 justify-center flex my-10">chart area placeholder</p>

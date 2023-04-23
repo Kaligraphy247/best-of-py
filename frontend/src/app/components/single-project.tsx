@@ -34,7 +34,7 @@ export default function SingleProject() {
   return (
     // <div>
       <div className="grid grid-cols-3">
-        <div className="flex px-4 py-4 mb-4 drop-shadow-sm justify-between col-span-2">
+        <div className="flex px-4 md:px-4 py-4 mb-4 drop-shadow-sm justify-between col-span-2">
           <Image src="/pypi-large.svg" alt="stuff" width={54} height={54} />
           <div className="self-center dark:text-white pl-4">
             <section className="flex self-center space-x-2 text-[1.0rem]">
@@ -60,7 +60,7 @@ export default function SingleProject() {
             <div></div>
           </div>
         </div>
-        <div className="ml-4 border-dashed px-2 my-auto">
+        <div className="ml-4 border-dashed px-2 my-auto hidden md:block">
             <div className="space-y-2 text-[1rem]">
               <span className="border py-1 px-2  rounded-lg flex">
                 <Link href={""} target="_blank" className="flex line-clamp-1 text-[0.9rem]">

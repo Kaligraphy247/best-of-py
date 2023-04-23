@@ -39,7 +39,7 @@ export default function ProjectPypiSection() {
       </div>
 
       {/* chart area */}
-      <div className="border-b border-dashed">
+      <div className="border-b border-dashed hidden md:block">
         <div className="w-full h-[14rem]">
           <div className="justify-center flex">
             <p className="border border-dashed p-1 justify-center flex my-10">

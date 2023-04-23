@@ -64,10 +64,77 @@ export default function HotProjects() {
       description: "Python module to create simple ASCII tables",
       tags: example,
     },
+    // extra
+    {
+      title: "texttable2",
+      projectUrl: "texttable",
+      imageSrc: "",
+      altText: "",
+      githubUrl: "https://github.com/foutaise/texttable/",
+      projectWebsite: "",
+      pypiUrl: "https://pypi.org/project/texttable/",
+      description: "Python module to create simple ASCII tables",
+      tags: example,
+    },
+    {
+      title: "texttable3",
+      projectUrl: "texttable",
+      imageSrc: "",
+      altText: "",
+      githubUrl: "https://github.com/foutaise/texttable/",
+      projectWebsite: "",
+      pypiUrl: "https://pypi.org/project/texttable/",
+      description: "Python module to create simple ASCII tables",
+      tags: example,
+    },
+    {
+      title: "texttable4",
+      projectUrl: "texttable",
+      imageSrc: "",
+      altText: "",
+      githubUrl: "https://github.com/foutaise/texttable/",
+      projectWebsite: "",
+      pypiUrl: "https://pypi.org/project/texttable/",
+      description: "Python module to create simple ASCII tables",
+      tags: example,
+    },
+    {
+      title: "texttable5",
+      projectUrl: "texttable",
+      imageSrc: "",
+      altText: "",
+      githubUrl: "https://github.com/foutaise/texttable/",
+      projectWebsite: "",
+      pypiUrl: "https://pypi.org/project/texttable/",
+      description: "Python module to create simple ASCII tables",
+      tags: example,
+    },
+    {
+      title: "texttable6",
+      projectUrl: "texttable",
+      imageSrc: "",
+      altText: "",
+      githubUrl: "https://github.com/foutaise/texttable/",
+      projectWebsite: "",
+      pypiUrl: "https://pypi.org/project/texttable/",
+      description: "Python module to create simple ASCII tables",
+      tags: example,
+    },
+    {
+      title: "texttable7",
+      projectUrl: "texttable",
+      imageSrc: "",
+      altText: "",
+      githubUrl: "https://github.com/foutaise/texttable/",
+      projectWebsite: "",
+      pypiUrl: "https://pypi.org/project/texttable/",
+      description: "Python module to create simple ASCII tables",
+      tags: example,
+    },
   ];
   return (
-    <section className="border mx-4 mb-4 p-0 rounded-[0.20rem] h-[384px] md:w-[73%] md:h-[768px] lg:w-[72%] xl:w-[73.25%] xl:min-w-[25%]">
-      <ul className="last:border-b border-dashed">
+    <section className="border mx-4 mb-8 p-0 rounded-[0.20rem] h-min md:w-[73%] md:h-min md:mb-48 lg:w-[72%] xl:w-[73.25%] xl:min-w-[25%]">
+      <ul className="last:border-b-0 border-dashed">
         {data.map(
           ({
             title,

@@ -64,8 +64,8 @@ export default function RecentlyAdded() {
     },
   ];
   return (
-    <section className="border mx-4 mb-12 p-0 rounded-[0.20rem] h-[384px] md:w-[73%] md:h-[768px]  lg:w-[72%] xl:w-[73.25%] xl:min-w-[25%]">
-      <ul className="last:border-b border-dashed">
+    <section className="border mx-4 mb-16 p-0 rounded-[0.20rem] h-min md:w-[73%] md:h-min lg:w-[72%] xl:w-[73.25%] xl:min-w-[25%]">
+      <ul className="last:border-b-0 border-dashed">
         {data.map(
           ({
             title,
