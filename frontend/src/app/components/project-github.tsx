@@ -29,7 +29,7 @@ export default function ProjectGitHubSection() {
       <div className="border-b border-dashed">
         <div className="grid grid-cols-2 mx-4 my-3 space-y-2 space-x-4 md:space-x-2">
           <div>
-            <Link href="" className="text-blue-500 flex pt-2 line-clamp-1">
+            <Link href="" className="text-blue-500 flex pt-2 pl-2 line-clamp-1">
               averylonglinkaverylonglink
               <span className="pt-0.5">
                 <TbExternalLink />
@@ -42,7 +42,7 @@ export default function ProjectGitHubSection() {
               <div className="pt-[0.20rem]">
                 <BsPeopleFill />
               </div>
-              <p className="pl-0">9 contributors</p>
+              <p className="pl-2">9 contributors</p>
             </div>
           </div>
           <div>
