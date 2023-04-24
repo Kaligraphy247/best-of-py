@@ -29,7 +29,7 @@ export default function ProjectGitHubSection() {
       <div className="border-b border-dashed">
         <div className="grid grid-cols-2 mx-4 my-3 space-y-2 space-x-4 md:space-x-2">
           <div>
-            <Link href="" className="text-blue-500 flex pt-2 pl-2 line-clamp-1">
+            <Link href="" className="text-blue-500 flex pt-2 pl-3 line-clamp-1">
               averylonglinkaverylonglink
               <span className="pt-0.5">
                 <TbExternalLink />
@@ -57,7 +57,7 @@ export default function ProjectGitHubSection() {
       </div>
 
       {/* chart area */}
-      <div className="border-b border-dashed hidden md:block">
+      <div className="hidden md:block">
         <div className="w-full h-[14rem]">
           <div className="justify-center flex">
             <p className="border border-dashed p-1 justify-center flex my-10">chart area placeholder</p>
@@ -65,7 +65,6 @@ export default function ProjectGitHubSection() {
         </div>
       </div>
       {/* end of chart area */}
-      
     </div>
   );
 }

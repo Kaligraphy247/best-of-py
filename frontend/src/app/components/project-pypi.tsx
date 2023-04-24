@@ -2,10 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { TbExternalLink } from "react-icons/tb";
 
-
 /**
  * #### Project PyPi Section Component
- * 
+ *
  * Contains PyPi stats, charts and anything related to PyPi stats for
  * for a project.
  */
@@ -15,7 +14,7 @@ export default function ProjectPypiSection() {
       <div className="py-2 pl-3 flex border-b">
         <Image src={"/pypi.svg"} alt="github logo" width={24} height={24} />
         <h2 className="pl-3 flex self-center">
-          Library on 
+          Library on
           <Link href="https://pypi.org" className="hover:underline">
             &nbsp;Pypi
           </Link>
@@ -39,7 +38,7 @@ export default function ProjectPypiSection() {
       </div>
 
       {/* chart area */}
-      <div className="border-b border-dashed hidden md:block">
+      <div className="hidden md:block">
         <div className="w-full h-[14rem]">
           <div className="justify-center flex">
             <p className="border border-dashed p-1 justify-center flex my-10">

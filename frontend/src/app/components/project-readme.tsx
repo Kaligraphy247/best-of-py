@@ -26,13 +26,13 @@ export default function ProjectReadmeSection() {
 
   return (
     <div className="border-t mt-8 ">
-      <div className="py-2 pl-3 flex border-b">
+      <div className="py-2 pl-3 flex">
         <div className="pt-1">
           <FaReadme size={18} />
         </div>
         <h2 className="pl-3 flex self-center text-lg">README</h2>
       </div>
-      <div className="border-t border-dashed pt-8">
+      <div className="border-t pt-0">
         <ReadmeMarkdownComponent markdownString={markdown} />
         <div className="text-center border-t py-4 w-full">
           <Link href={""} className="hover:underline">
