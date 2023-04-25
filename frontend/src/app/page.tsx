@@ -12,7 +12,7 @@ export default function Home() {
     <main>
       {/* className="min-h-screen relative" */}
       <CustomHeader />
-      <div className="mt-8 md:mx-12 lg:mx-40 xl:mx-72 bg-gray-50">
+      <div className="mt-8 md:mx-12 lg:mx-32 xl:mx-40 bg-gray-50">
         <div>
           <h1 className="border float-right p-1 rounded-[0.20rem] hidden md:bg-green-500 md:block md:w-[23%] lg:bg-red-500 lg:w-[23%] xl:bg-purple-500 xl:w-[23%] xl:min-w-[22%] text-lg">
             Featured Projects

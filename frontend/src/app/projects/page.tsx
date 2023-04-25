@@ -65,7 +65,7 @@ export default function Projects() {
   return (
     <main className="min-h-screen relative">
       <CustomHeader />
-      <div className="mx-4 mt-8 md:mx-12 lg:mx-40 xl:mx-72 bg-gray-50">
+      <div className="mx-4 mt-8 mb-16 md:mx-24 lg:mx-40 xl:mx-72 bg-gray-50">
         <ul className="border">
           {data.map(
             ({

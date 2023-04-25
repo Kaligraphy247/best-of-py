@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import { FaHome } from "react-icons/fa";
 import Link from "next/link";
@@ -23,44 +22,50 @@ type ProjectProps = {
 };
 
 /**
-  * #### Project Item
-  * Renders a section for a single Project
-*/
+ * #### Project Item
+ * Renders a section for a single Project
+ */
 export default function ProjectItem({ Item }: ProjectProps) {
   return (
     <>
-      <li className="border-b border-dashed border-gray-300 flex mx-0 px-3 py-4 mb-0 shadow-sm drop-shadow-lg last:border-b-0">
+      <li className="border-b border-dashed border-gray-300 grid grid-cols-5 lg:grid-cols-12 space-x-4 lg:space-x-8 mx-0 px-3 py-4 mb-0 shadow-sm drop-shadow-lg last:border-b-0">
         {/* //* logo/image */}
-        {Item.imageSrc !== "" ||
-        undefined ||
-        Item.altText !== "" ||
-        undefined ? (
-          <Link
-            href={`/projects/${Item.projectUrl}`}
-            className="my-auto rounded"
-          >
-            <Image
-              src={Item.imageSrc}
-              alt={Item.altText}
-              width={44}
-              height={44}
-            />
-          </Link>
-        ) : (
-          <Link
-            href={`/projects/${Item.projectUrl}`}
-            className="my-auto rounded"
-          >
-            <Image
-              src="/pypi-large.svg"
-              alt="logo alt-text fallback"
-              width={44}
-              height={44}
-            />
-          </Link>
-        )}
-        <div className="self-center dark:text-white pl-4">
-          <section className="flex self-center space-x-2 text-[1.0rem] whitespace-nowrap">
+        <div className="border rounded my-auto mx-auto w-20">
+          {Item.imageSrc !== "" ||
+          undefined ||
+          Item.altText !== "" ||
+          undefined ? (
+            <Link
+              href={`/projects/${Item.projectUrl}`}
+              className="mx-auto mt-4 mb-4 rounded"
+            >
+              <Image
+                src={Item.imageSrc}
+                alt={Item.altText}
+                width={44}
+                height={44}
+                className="mx-auto mt-4 mb-4 rounded"
+              />
+            </Link>
+          ) : (
+            <Link
+              href={`/projects/${Item.projectUrl}`}
+              className="my-auto rounded bg-red-500"
+            >
+              <Image
+                src="/pypi-large.svg"
+                alt="logo alt-text fallback"
+                width={44}
+                height={44}
+                className="mx-auto mt-4 mb-4 rounded"
+              />
+            </Link>
+          )}
+        </div>
+
+        {/* //* details */}
+        <div className="self-center dark:text-white pl-4 col-span-4 lg:col-span-11">
+          <section className="flex self-center space-x-2 text-[1.0rem] font-medium whitespace-nowrap">
             {/* //* project name & url */}
             {Item.projectUrl !== "" ||
             undefined ||
@@ -120,11 +125,11 @@ export default function ProjectItem({ Item }: ProjectProps) {
           {/* //* description */}
           <div className="py-1">
             {Item.description !== "" || undefined ? (
-              <p className="line-clamp-1 text-sm font-thin">
+              <p className="line-clamp-1 text-[0.8rem] italic">
                 {Item.description}
               </p>
             ) : (
-              <p className="line-clamp-1 text-sm font-thin">
+              <p className="line-clamp-1 text-[0.8rem] italic">
                 Fallback description
               </p>
             )}
