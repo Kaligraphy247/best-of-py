@@ -6,7 +6,8 @@ import remarkToc from "remark-toc";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 // import { readFileSync } from "fs";
-import styles from "../components/ProjectReadme.module.css";
+// import styles from "../components/ProjectReadme.module.css";
+import styles from "../styles/ProjectReadme.module.css";
 
 type ReadmeMarkdownComponentProps = {
   markdownString: string;

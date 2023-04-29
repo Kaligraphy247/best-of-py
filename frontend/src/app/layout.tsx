@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { Fira_Sans, Fira_Code } from "next/font/google";
-import "./globals.css";
+import "./styles/globals.css"
 
 //* fonts
 const Fira = Fira_Sans({
