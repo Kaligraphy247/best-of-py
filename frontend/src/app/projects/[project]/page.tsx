@@ -1,7 +1,7 @@
 import { Metadata, ResolvingMetadata } from "next";
 import CustomFooter from "@/app/components/footer";
 import CustomHeader from "@/app/components/header";
-import SingleProject from "@/app/components/single-project";
+import ProjectInfoSection from "@/app/components/project-info";
 import ProjectGitHubSection from "@/app/components/project-github";
 import ProjectPypiSection from "@/app/components/project-pypi";
 import ProjectReadmeSection from "@/app/components/project-readme";
@@ -104,7 +104,7 @@ const data = [
       <div className="border-l border-r border-t rounded mx-4 mt-8 mb-12 md:mx-12 lg:mx-40 xl:mx-72 bg-gray-50">
         <div className="border-b">
 
-          <SingleProject />
+          <ProjectInfoSection />
           <ProjectGitHubSection />
           <ProjectPypiSection />
           <ProjectReadmeSection />
