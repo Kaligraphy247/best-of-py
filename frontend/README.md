@@ -6,5 +6,5 @@
 
 
 ## Todo
-- [] hide/fix scroll bar for tags in /
-- [] ...
+- [ ] hide/fix scroll bar for tags in `/`
+- [ ] ---
