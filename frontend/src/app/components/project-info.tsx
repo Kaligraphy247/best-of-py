@@ -31,13 +31,12 @@ export async function generateMetadata(
  */
 export default function ProjectInfoSection() {
   return (
-    // <div>
     <div className="grid grid-cols-3">
       <div className="flex px-4 md:px-4 py-4 mb-4 drop-shadow-sm justify-between col-span-2">
         <Image src="/pypi-large.svg" alt="stuff" width={54} height={54} />
         <div className="self-center dark:text-white pl-4">
           <section className="flex self-center space-x-2 text-[1.0rem]">
-            <Link href={""} className="text-xl font-medium">
+            <Link href={""} className="text-xl font-medium text-[#3877ab] hover:text-[#616161]">
               Name-of-Project
             </Link>
           </section>

@@ -1,8 +1,24 @@
+import { types } from "util";
 import CustomFooter from "../components/footer";
 import CustomHeader from "../components/header";
 import ProjectItem from "../components/project-item";
+import { ProjectProps } from "../components/project-item";
 
-export default function Projects() {
+export default async function Projects() {
+  let data1 = async () => {
+    let project = await fetch("https://49m75b-8000.csb.app/api/get-all-projects", {
+      method: "GET",
+    });
+
+    if (project.ok) {
+      let result = await project.json();
+      return result;
+    }
+    return { Err: "Error" };
+  };
+
+  let o = await data1();
+
   const example = [
     { tag: "GUI", tagUrl: "GUI-URL" },
     { tag: "Numpy", tagUrl: "Numpy-URL" },
@@ -67,7 +83,7 @@ export default function Projects() {
       <CustomHeader />
       <div className="mx-4 mt-8 mb-16 md:mx-24 lg:mx-40 xl:mx-72 bg-gray-50">
         <ul className="border">
-          {data.map(
+          {o.map(
             ({
               title,
               projectUrl,
@@ -78,7 +94,7 @@ export default function Projects() {
               pypiUrl,
               description,
               tags,
-            }) => (
+            }: ProjectProps["Item"]) => (
               <ProjectItem
                 key={title}
                 Item={{

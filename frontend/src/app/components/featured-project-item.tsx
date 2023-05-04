@@ -175,12 +175,12 @@ export default function FeaturedProjectItem({ Item }: FeaturedProjectProps) {
             undefined ? (
               <Link
                 href={Item.projectUrl}
-                className="text-sm font-medium pb-0 line-clamp-1"
+                className="text-sm font-medium pb-0 line-clamp-1 text-[#3877ab] hover:text-[#616161]"
               >
                 {Item.title}
               </Link>
             ) : (
-              <Link href={""} className="text-sm font-medium pb-0 line-clamp-1">
+              <Link href={""} className="text-sm font-medium pb-0 line-clamp-1 text-[#3877ab] hover:text-[#616161]">
                 Name-of-Project
               </Link>
             )}

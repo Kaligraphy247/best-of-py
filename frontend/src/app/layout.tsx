@@ -22,7 +22,7 @@ export const FiraCode = Fira_Code({
 export const metadata: Metadata = {
   title: "Best of Python",
   description:
-    "Find out what' trending, or get inspired by open source projects.",
+    "Find out what's trending, or get inspired by open source projects.",
 };
 
 export default function RootLayout({

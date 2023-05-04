@@ -48,7 +48,9 @@ export default function ReadmeMarkdownComponent({
                 PreTag="div"
                 // showLineNumbers // * unnecessary in this context
                 // showInlineLineNumbers
-              >{String(children).replace(/\n$/, "")}</SyntaxHighlighter>
+              >
+                {String(children).replace(/\n$/, "")}
+              </SyntaxHighlighter>
             ) : (
               <code {...props} className={className}>
                 {children}

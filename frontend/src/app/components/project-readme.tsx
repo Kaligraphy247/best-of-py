@@ -21,7 +21,14 @@ export default function ProjectReadmeSection() {
 
   ~~~js
   console.log('It works!')
+  let a = c;
   ~~~
+  # Heading 1
+  ## Heading 2
+  - list 1
+  - list 2
+  - [ ] checkbox list
+  - [x] checked list
   `;
 
   return (
@@ -34,7 +41,7 @@ export default function ProjectReadmeSection() {
       </div>
       <div className="border-t pt-0">
         <ReadmeMarkdownComponent markdownString={markdown} />
-        <div className="text-center border-t py-4 w-full">
+        <div className="text-center border-t border-dashed py-4 w-full bg-[#2b5a83] border-white text-[#ffffff] ">
           <Link href={""} className="hover:underline">
             View on Github
           </Link>

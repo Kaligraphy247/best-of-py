@@ -9,7 +9,8 @@ import CustomFooter from "./components/footer";
 
 export default function Home() {
   return (
-    <main>
+    // text-[#616161]
+    <main className="bg-[#fcfcfc]">
       {/* className="min-h-screen relative" */}
       <CustomHeader />
       <div className="mt-8 md:mx-12 lg:mx-32 xl:mx-40 bg-gray-50">

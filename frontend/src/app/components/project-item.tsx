@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FaHome } from "react-icons/fa";
 import Link from "next/link";
 
-type ProjectProps = {
+export type ProjectProps = {
   Item: {
     title: string;
     projectUrl: string;
@@ -71,9 +71,9 @@ export default function ProjectItem({ Item }: ProjectProps) {
             undefined ||
             Item.title !== "" ||
             undefined ? (
-              <Link href={`/projects/${Item.projectUrl}`}>{Item.title}</Link>
+              <Link href={`/projects/${Item.projectUrl}`} className="text-[#3877ab] hover:text-[#616161]">{Item.title}</Link>
             ) : (
-              <Link href={""}>Name-of-Project</Link>
+              <Link href={""} className="text-[#3877ab] hover:text-[#616161]">Name-of-Project</Link>
             )}
             <div className="self-center flex space-x-3">
               {/* //* quick link for github, project home & pypi */}

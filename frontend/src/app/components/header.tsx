@@ -7,7 +7,7 @@ import Image from "next/image";
  */
 export default function CustomHeader() {
   return (
-    <div className="mx-auto p-3 flex border space-x-8">
+    <div className="mx-auto p-3 flex border-b space-x-8 bg-[#2b5a83] text-[#dadada]">
       <Link href={"/"} className="flex">
         <Image
           src="/python-logo.svg"
