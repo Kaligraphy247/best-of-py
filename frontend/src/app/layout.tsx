@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 import { Fira_Sans, Fira_Code } from "next/font/google";
 import "./styles/globals.css"
@@ -32,7 +33,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={Fira.className}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

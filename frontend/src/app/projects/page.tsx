@@ -4,20 +4,19 @@ import CustomHeader from "../components/header";
 import ProjectItem from "../components/project-item";
 import { ProjectProps } from "../components/project-item";
 
+async function getData() {
+  const res = await fetch("https://49m75b-8000.csb.app/api/get-all-projects");
+
+  // Handle errors
+  if (!res.ok) {
+    throw new Error("Failed to Fetch Data");
+  }
+  // return res regardless
+  return res.json();
+}
+
 export default async function Projects() {
-  let data1 = async () => {
-    let project = await fetch("https://49m75b-8000.csb.app/api/get-all-projects", {
-      method: "GET",
-    });
-
-    if (project.ok) {
-      let result = await project.json();
-      return result;
-    }
-    return { Err: "Error" };
-  };
-
-  let o = await data1();
+  const data = await getData();
 
   const example = [
     { tag: "GUI", tagUrl: "GUI-URL" },
@@ -26,7 +25,7 @@ export default async function Projects() {
   ];
   const example2: any = [];
 
-  const data = [
+  const data1 = [
     {
       title: "schedule",
       projectUrl: "schedule",
@@ -83,7 +82,7 @@ export default async function Projects() {
       <CustomHeader />
       <div className="mx-4 mt-8 mb-16 md:mx-24 lg:mx-40 xl:mx-72 bg-gray-50">
         <ul className="border">
-          {o.map(
+          {data.map(
             ({
               title,
               projectUrl,

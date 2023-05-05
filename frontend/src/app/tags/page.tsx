@@ -10,15 +10,19 @@ type Tag = {
   tagUrl: string;
 };
 
-export default async function Tags() {
-  let data = async () => {
-    let tag = await fetch("https://49m75b-8000.csb.app/api/get-all-tags");
+async function getData() {
+  const res = await fetch("https://49m75b-8000.csb.app/api/get-all-tags");
 
-    if (tag.ok) {
-      return await tag.json();
-    }
-  };
-  let tags = await data();
+  // Handle errors
+  if (!res.ok) {
+    throw new Error("Failed to Fetch Data");
+  }
+  // return res regardless
+  return res.json();
+}
+
+export default async function Tags() {
+  const data = await getData();
 
   return (
     <main className="min-h-screen relative">
@@ -26,7 +30,7 @@ export default async function Tags() {
       <div className="mt-8 mx-4 md:mx-12 lg:mx-40 xl:mx-72 bg-gray-50">
         <div>
           <ul className="last:border-b border-dashed border-blue-300">
-            {tags.map(({ tag, tagUrl }: Tag) => (
+            {data.map(({ tag, tagUrl }: Tag) => (
               <li
                 className="border-t border-l border-r border-blue-300 border-dashed flex px-2 py-3 mb-0 shadow-sm drop-shadow-lg"
                 key={tag}

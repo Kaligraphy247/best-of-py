@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "turbo-dev": "next dev --turbo",
+    "turbo-dev": "next dev --turbo --show-all",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -15,12 +15,13 @@
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
     "@types/react-syntax-highlighter": "^15.5.6",
+    "@vercel/analytics": "^1.0.1",
     "autoprefixer": "10.4.14",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
     "flowbite": "^1.6.4",
     "flowbite-react": "^0.4.3",
-    "next": "^13.3.1",
+    "next": "^13.4",
     "postcss": "8.4.21",
     "react": "18.2.0",
     "react-dom": "18.2.0",
