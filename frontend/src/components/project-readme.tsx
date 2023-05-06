@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaReadme } from "react-icons/fa";
 import ReadmeMarkdownComponent from "./markdown-component";
-import { readFileSync } from "fs";
+
 
 /**
  * #### Project Github Component

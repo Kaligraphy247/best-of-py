@@ -1,8 +1,5 @@
-import { types } from "util";
-import CustomFooter from "../components/footer";
-import CustomHeader from "../components/header";
-import ProjectItem from "../components/project-item";
-import { ProjectProps } from "../components/project-item";
+import ProjectItem from "../../components/project-item";
+import { ProjectProps } from "../../components/project-item";
 
 async function getData() {
   const res = await fetch("https://49m75b-8000.csb.app/api/get-all-projects");
@@ -79,7 +76,6 @@ export default async function Projects() {
   ];
   return (
     <main className="min-h-screen relative">
-      <CustomHeader />
       <div className="mx-4 mt-8 mb-16 md:mx-24 lg:mx-40 xl:mx-72 bg-gray-50">
         <ul className="border">
           {data.map(
@@ -111,7 +107,6 @@ export default async function Projects() {
             )
           )}
         </ul>
-        <CustomFooter />
       </div>
     </main>
   );

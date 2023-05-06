@@ -1,7 +1,10 @@
 import { Analytics } from "@vercel/analytics/react";
+import CustomFooter from "../components/footer";
+import CustomHeader from "../components/header";
 import { Metadata } from "next";
 import { Fira_Sans, Fira_Code } from "next/font/google";
-import "./styles/globals.css"
+import "../styles/globals.css"
+
 
 //* fonts
 const Fira = Fira_Sans({
@@ -34,7 +37,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={Fira.className}>
       <body>
+        <CustomHeader />
         {children}
+        <CustomFooter />
         <Analytics />
       </body>
     </html>

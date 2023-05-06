@@ -10,7 +10,6 @@ export default function ProjectsLayout({
 
 // * Metadata - head tag
 export const metadata: Metadata = {
-  title: "Projects | Best of Python",
-  description:
-    "Find out what's trending, or get inspired by open source projects.",
+  title: "Backoffice | Best of Python",
+  description: "Manage Data from here.",
 };
