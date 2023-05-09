@@ -4,7 +4,7 @@ import { useState } from "react";
 import Select from "react-select";
 
 async function getTags() {
-  let result = await fetch("https://49m75b-8000.csb.app/api/get-all-tags");
+  let result = await fetch("https://49m75b-8000.csb.app/api/get-all-tags", {mode: "no-cors"});
   if (!result.ok) {
     throw new Error("Failed to fetch Data");
     // more handling here

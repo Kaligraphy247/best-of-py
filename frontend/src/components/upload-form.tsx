@@ -5,7 +5,8 @@ import { Modal } from "flowbite";
 
 async function fetchProjectData(project_title: string) {
   let result = await fetch(
-    `https://49m75b-8000.csb.app/api/get-project?project_title=${project_title}`
+    `https://49m75b-8000.csb.app/api/get-project?project_title=${project_title}`,
+    {mode: "no-cors"}
   );
   if (!result.ok) {
     throw new Error("Failed to Fetch Data");
