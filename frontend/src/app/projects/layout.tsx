@@ -12,5 +12,5 @@ export default function ProjectsLayout({
 export const metadata: Metadata = {
   title: "Projects | Best of Python",
   description:
-    "Find out what' trending, or get inspired by open source projects.",
+    "Find out what's trending, or get inspired by open source projects.",
 };

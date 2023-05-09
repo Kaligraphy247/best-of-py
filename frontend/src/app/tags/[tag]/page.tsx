@@ -1,7 +1,5 @@
 import { Metadata, ResolvingMetadata } from "next";
-import CustomHeader from "@/app/components/header";
-import CustomFooter from "@/app/components/footer";
-import ProjectItem from "@/app/components/project-item";
+import ProjectItem from "@/components/project-item";
 import { FaHashtag } from "react-icons/fa";
 
 type TagMetadataProps = {
@@ -89,7 +87,6 @@ export default function Tag({ params, searchParams }: TagMetadataProps) {
   ];
   return (
     <main>
-      <CustomHeader />
       <div className="border mt-8 mx-4 mb-12 md:mx-12 lg:mx-40 xl:mx-72 bg-gray-50">
         {/* <div className="border-b h-[920px]"> */}
           {/* <h1 className="text-2xl text-center">Tags</h1>
@@ -125,7 +122,6 @@ export default function Tag({ params, searchParams }: TagMetadataProps) {
             )
           )}
         </ul>
-        <CustomFooter />
       </div>
     </main>
   );

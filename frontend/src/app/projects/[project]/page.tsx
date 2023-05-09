@@ -1,10 +1,8 @@
 import { Metadata, ResolvingMetadata } from "next";
-import CustomFooter from "@/app/components/footer";
-import CustomHeader from "@/app/components/header";
-import ProjectInfoSection from "@/app/components/project-info";
-import ProjectGitHubSection from "@/app/components/project-github";
-import ProjectPypiSection from "@/app/components/project-pypi";
-import ProjectReadmeSection from "@/app/components/project-readme";
+import ProjectInfoSection from "@/components/project-info";
+import ProjectGitHubSection from "@/components/project-github";
+import ProjectPypiSection from "@/components/project-pypi";
+import ProjectReadmeSection from "@/components/project-readme";
 
 
 type ProjectMetadataProps = {
@@ -100,7 +98,6 @@ const data = [
 ];
   return (
     <main>
-      <CustomHeader />
       <div className="border-l border-r border-t rounded mx-4 mt-8 mb-12 md:mx-12 lg:mx-40 xl:mx-72 bg-gray-50">
         <div className="border-b">
 
@@ -110,7 +107,6 @@ const data = [
           <ProjectReadmeSection />
           {/* <p>URL params?: {params.project}</p> */}
         </div>
-        <CustomFooter />
       </div>
     </main>
   );
