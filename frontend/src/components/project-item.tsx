@@ -28,28 +28,30 @@ export type ProjectProps = {
 export default function ProjectItem({ Item }: ProjectProps) {
   return (
     <>
-      <li className="border-b border-dashed border-gray-300 grid grid-cols-5 lg:grid-cols-12 space-x-4 lg:space-x-8 mx-0 px-3 py-4 mb-0 shadow-sm drop-shadow-lg last:border-b-0">
+      <li className="mx-0 mb-0 grid grid-cols-5 space-x-4 border-b border-dashed border-gray-300 px-3 py-4 shadow-sm drop-shadow-lg last:border-b-0 lg:grid-cols-12 lg:space-x-8">
         {/* //* logo/image */}
-        <div className="border rounded my-auto mx-auto w-20">
+        <div className="mx-auto my-auto w-20 rounded border">
           {Item.imageSrc !== "" ||
           undefined ||
           Item.altText !== "" ||
           undefined ? (
             <Link
               href={`/projects/${Item.projectUrl}`}
-              className="mx-auto mt-4 mb-4 rounded"
+              prefetch={false}
+              className="mx-auto mb-4 mt-4 rounded"
             >
               <Image
                 src={Item.imageSrc}
                 alt={Item.altText}
                 width={44}
                 height={44}
-                className="mx-auto mt-4 mb-4 rounded"
+                className="mx-auto mb-4 mt-4 rounded"
               />
             </Link>
           ) : (
             <Link
               href={`/projects/${Item.projectUrl}`}
+              prefetch={false}
               className="my-auto rounded bg-red-500"
             >
               <Image
@@ -57,25 +59,33 @@ export default function ProjectItem({ Item }: ProjectProps) {
                 alt="logo alt-text fallback"
                 width={44}
                 height={44}
-                className="mx-auto mt-4 mb-4 rounded"
+                className="mx-auto mb-4 mt-4 rounded"
               />
             </Link>
           )}
         </div>
 
         {/* //* details */}
-        <div className="self-center dark:text-white pl-4 col-span-4 lg:col-span-11">
-          <section className="flex self-center space-x-2 text-[1.0rem] font-medium whitespace-nowrap">
+        <div className="col-span-4 self-center pl-4 dark:text-white lg:col-span-11">
+          <section className="flex space-x-2 self-center whitespace-nowrap text-[1.0rem] font-medium">
             {/* //* project name & url */}
             {Item.projectUrl !== "" ||
             undefined ||
             Item.title !== "" ||
             undefined ? (
-              <Link href={`/projects/${Item.projectUrl}`} className="text-[#3877ab] hover:text-[#616161]">{Item.title}</Link>
+              <Link
+                href={`/projects/${Item.projectUrl}`}
+                prefetch={false}
+                className="text-[#3877ab] hover:text-[#616161]"
+              >
+                {Item.title}
+              </Link>
             ) : (
-              <Link href={""} className="text-[#3877ab] hover:text-[#616161]">Name-of-Project</Link>
+              <Link href={""} className="text-[#3877ab] hover:text-[#616161]">
+                Name-of-Project
+              </Link>
             )}
-            <div className="self-center flex space-x-3">
+            <div className="flex space-x-3 self-center">
               {/* //* quick link for github, project home & pypi */}
               {/* //* github */}
               {Item.githubUrl !== "" || undefined ? (
@@ -141,7 +151,7 @@ export default function ProjectItem({ Item }: ProjectProps) {
               {Item.tags?.length !== 0 || undefined ? (
                 Item.tags?.map(({ tag, tagUrl }) => (
                   <li
-                    className="border rounded shadow-sm hover:cursor-pointer px-3 py-1"
+                    className="rounded border px-3 py-1 shadow-sm hover:cursor-pointer"
                     key={tag}
                   >
                     <Link href={`/tags/${tagUrl}`}>{tag}</Link>

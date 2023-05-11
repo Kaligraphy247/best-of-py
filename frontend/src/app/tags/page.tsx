@@ -34,7 +34,7 @@ export default async function Tags() {
               >
                 <div className="self-center dark:text-white pl-4">
                   <section className="flex self-center space-x-2 text-[1.0rem]">
-                    <Link href={`/tags/${tagUrl}`} className="hover:underline">
+                    <Link href={`/tags/${tagUrl}`} prefetch={false} className="hover:underline">
                       {tag}
                     </Link>
                     <div className="self-center flex space-x-3">
