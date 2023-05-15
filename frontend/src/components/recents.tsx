@@ -1,9 +1,18 @@
-import ProjectItem from "./project-item";
+import ProjectItem, { ProjectProps } from "./project-item";
+import { getXataClient } from "@/utils/xata";
+
+async function getData() {
+  const xata = getXataClient();
+  const project = await xata.db.projects.getAll();
+  return project
+}
 
 /**
  * #### RecentlyAdded Component
  */
-export default function RecentlyAdded() {
+export default async function RecentlyAdded() {
+  const project: any = await getData();
+
   const example = [
     { tag: "GUI", tagUrl: "GUI-URL" },
     { tag: "Numpy", tagUrl: "Numpy-URL" },
@@ -66,7 +75,7 @@ export default function RecentlyAdded() {
   return (
     <section className="border mx-4 mb-16 p-0 rounded-[0.20rem] h-min md:w-[73%] md:h-min lg:w-[72%] xl:w-[73.25%] xl:min-w-[25%]">
       <ul className="last:border-b-0 border-dashed">
-        {data.map(
+        {project.map(
           ({
             title,
             projectUrl,
@@ -77,7 +86,7 @@ export default function RecentlyAdded() {
             pypiUrl,
             description,
             tags,
-          }) => (
+          }: ProjectProps["Item"]) => (
             <ProjectItem
               key={title}
               Item={{

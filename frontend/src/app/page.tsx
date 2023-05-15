@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import Image from "next/image";
 import HotProjects from "../components/hot-projects";
 import FeaturedProjects from "../components/featured";
@@ -20,7 +20,9 @@ export default function Home() {
             Some of the best projects Python has to offer
           </h1>
         </div>
+        {/* @ts-expect-error */}
         <FeaturedProjects />
+        {/* @ts-expect-error */}
         <HotProjects />
         <div>
           <h1 className="border float-right p-1 rounded-[0.20rem] hidden md:bg-green-500 md:block md:w-[23%] lg:bg-red-500 lg:w-[24.5%] xl:bg-purple-500 xl:w-[24.25%] xl:min-w-[23%] text-lg">
@@ -31,6 +33,7 @@ export default function Home() {
           </h1>
         </div>
         <Tags />
+        {/* @ts-expect-error */}
         <RecentlyAdded />
       </div>
     </main>

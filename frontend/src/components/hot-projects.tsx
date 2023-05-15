@@ -1,11 +1,21 @@
-import ProjectItem from "./project-item";
+import ProjectItem, { ProjectProps } from "./project-item";
+import { getXataClient } from "@/utils/xata";
+
+async function getData() {
+  const xata = getXataClient();
+  const projects: any = await xata.db.projects.getAll();
+  return projects;
+}
 
 /**
  * #### Hot Projects Component
  *
  * Hot projects based on selected Criteria.
  */
-export default function HotProjects() {
+export default async function HotProjects() {
+  const projects: any = await getData();
+  // console.log(projects)
+
   const example = [
     { tag: "GUI", tagUrl: "GUI-URL" },
     { tag: "Numpy", tagUrl: "Numpy-URL" },
@@ -132,10 +142,11 @@ export default function HotProjects() {
       tags: example,
     },
   ];
+
   return (
-    <section className="border mx-4 mb-8 p-0 rounded-[0.20rem] h-min md:w-[73%] md:h-min md:mb-48 lg:w-[72%] xl:w-[73.25%] xl:min-w-[25%]">
-      <ul className="last:border-b-0 border-dashed">
-        {data.map(
+    <section className="mx-4 mb-8 h-min rounded-[0.20rem] border p-0 md:mb-48 md:h-min md:w-[73%] lg:w-[72%] xl:w-[73.25%] xl:min-w-[25%]">
+      <ul className="border-dashed last:border-b-0">
+        {projects.map(
           ({
             title,
             projectUrl,
@@ -146,7 +157,7 @@ export default function HotProjects() {
             pypiUrl,
             description,
             tags,
-          }) => (
+          }: ProjectProps["Item"]) => (
             <ProjectItem
               key={title}
               Item={{

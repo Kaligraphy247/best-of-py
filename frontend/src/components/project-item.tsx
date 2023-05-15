@@ -12,12 +12,14 @@ export type ProjectProps = {
     projectWebsite: string;
     pypiUrl: string;
     description?: string;
-    tags?:
-      | {
-          tag: string;
-          tagUrl: string;
-        }[]
-      | undefined;
+    //   tags?:
+    //     | {
+    //         tag: string;
+    //         tagUrl: string;
+    //       }[]
+    //     | undefined;
+    // };
+    tags?: string[] | null | undefined;
   };
 };
 
@@ -45,7 +47,7 @@ export default function ProjectItem({ Item }: ProjectProps) {
                 alt={Item.altText}
                 width={44}
                 height={44}
-                className="mx-auto mb-4 mt-4 rounded"
+                className="mx-auto my-3 rounded w-[48px] h-[48px]"
               />
             </Link>
           ) : (
@@ -147,7 +149,7 @@ export default function ProjectItem({ Item }: ProjectProps) {
 
           {/* //* tags */}
           <div>
-            <ul className="flex space-x-3">
+            {/* <ul className="flex space-x-3">
               {Item.tags?.length !== 0 || undefined ? (
                 Item.tags?.map(({ tag, tagUrl }) => (
                   <li
@@ -155,6 +157,22 @@ export default function ProjectItem({ Item }: ProjectProps) {
                     key={tag}
                   >
                     <Link href={`/tags/${tagUrl}`}>{tag}</Link>
+                  </li>
+                ))
+              ) : (
+                <></>
+              )}
+            </ul> */}
+
+            <ul className="flex space-x-3">
+              {Item.tags?.length !== 0 || undefined || null ? (
+                Item.tags?.map((tag) => (
+                  
+                  <li
+                    className="rounded border px-3 py-1 shadow-sm hover:cursor-pointer"
+                    key={tag}
+                  >
+                    <Link href={`/tags/${tag}`}>{tag}</Link>
                   </li>
                 ))
               ) : (

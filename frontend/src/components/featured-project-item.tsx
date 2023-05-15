@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { HiOutlineStar } from "react-icons/hi";
 import Link from "next/link";
+// import 
 
 type FeaturedProjectProps = {
   Item: {
@@ -9,15 +10,13 @@ type FeaturedProjectProps = {
     imageSrc: string;
     altText: string;
     githubStars: string | number;
-    // projectWebsite: string;
-    // pypiUrl: string;
-    // description?: string;
-    tags?:
-      | {
-          tag: string;
-          tagUrl: string;
-        }[]
-      | undefined;
+    // tags?:
+    //   | {
+    //       tag: string;
+    //       tagUrl: string;
+    //     }[]
+    //   | undefined;
+    tags: string[] | undefined
   };
 };
 
@@ -155,7 +154,7 @@ type FeaturedProjectProps = {
 export default function FeaturedProjectItem({ Item }: FeaturedProjectProps) {
   return (
     <>
-      <div className="flex px-4 py-3 first:pt-0 mb-0 drop-shadow-sm border-b border-dashed lg:justify-center">
+      <div className="flex px-4 py-3 first:pt-0 mb-0 drop-shadow-sm border-b border-dashed lg:justify-center" key={Item.title}>
         {Item.imageSrc !== "" ||
         (undefined && Item.altText !== "") ||
         undefined ? (
@@ -164,6 +163,7 @@ export default function FeaturedProjectItem({ Item }: FeaturedProjectProps) {
             alt={Item.altText}
             width={40}
             height={40}
+            // className="w-[48px] h-[48]"
           />
         ) : (
           <Image src="/pypi-large.svg" alt="stuff" width={40} height={40} />
@@ -200,12 +200,12 @@ export default function FeaturedProjectItem({ Item }: FeaturedProjectProps) {
           <div>
             <ul className="block space-y-2">
               {Item.tags?.length !== 0 || undefined ? (
-                Item.tags?.map(({ tag, tagUrl }) => (
+                Item.tags?.map((tag) => (
                   <li
                     className="border rounded shadow-sm px-2 py-1 text-sm text-center"
                     key={tag}
                   >
-                    <Link href={`/tags/${tagUrl}`}>{tag}</Link>
+                    <Link href={`/tags/${tag}`}>{tag}</Link>
                   </li>
                 ))
               ) : (
