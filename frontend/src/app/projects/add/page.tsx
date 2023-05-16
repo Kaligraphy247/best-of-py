@@ -1,15 +1,11 @@
 import AddProjectForm, { GetTokenComponent } from "@/components/add-project";
+import { getXataClient } from "@/utils/xata";
 
 async function getTags() {
-  let result = await fetch("https://49m75b-8000.csb.app/api/get-all-tags", {
-    mode: "no-cors",
-  });
-  if (!result.ok) {
-    throw new Error("Failed to fetch Data");
-    // more handling here
-    // console.log("Failed to fetch data")
-  }
-  return result.json();
+  const xata = getXataClient();
+  const tags = xata.db.tags.getAll()
+  // console.log(tags) //! DEBUG
+  return tags
 }
 
 export default async function AddProject() {
@@ -24,7 +20,7 @@ export default async function AddProject() {
   return (
     <main className="bg-[#fcfcfc]">
       <div className="mx-4 mb-16 mt-8 rounded border p-2 md:mx-12 lg:mx-32 xl:mx-40">
-        <GetTokenComponent />
+        {/* <GetTokenComponent /> */}
         {/* @ts-expect-error Async Server Component */}
         <AddProjectForm options={tagOptions} />
       </div>

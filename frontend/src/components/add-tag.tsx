@@ -3,7 +3,6 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import CreatableSelect from "react-select/creatable";
 import { TagType } from "@/app/tags/page";
-import { getXataClient } from "@/utils/xata";
 
 interface Option {
   readonly label: string;
