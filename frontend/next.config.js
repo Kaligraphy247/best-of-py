@@ -3,7 +3,17 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  images: { unoptimized: true },
+  images: {
+    unoptimized: false,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

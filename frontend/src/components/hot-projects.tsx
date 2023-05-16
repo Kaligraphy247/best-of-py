@@ -174,6 +174,37 @@ export default async function HotProjects() {
             />
           )
         )}
+
+
+        {/* more  */}
+        {projects.map(
+          ({
+            title,
+            projectUrl,
+            imageSrc,
+            altText,
+            githubUrl,
+            projectWebsite,
+            pypiUrl,
+            description,
+            tags,
+          }: ProjectProps["Item"]) => (
+            <ProjectItem
+              key={title}
+              Item={{
+                title,
+                projectUrl,
+                imageSrc,
+                altText,
+                githubUrl,
+                projectWebsite,
+                pypiUrl,
+                description,
+                tags,
+              }}
+            />
+          )
+        )}
       </ul>
     </section>
   );

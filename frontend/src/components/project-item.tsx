@@ -92,7 +92,7 @@ export default function ProjectItem({ Item }: ProjectProps) {
               {/* //* github */}
               {Item.githubUrl !== "" || undefined ? (
                 <span>
-                  <Link href={Item.githubUrl} target="_blank">
+                  <Link href={Item.githubUrl} target="_blank" prefetch={false}>
                     <Image
                       src="/github-mark.svg"
                       alt="github-logo"
@@ -108,7 +108,7 @@ export default function ProjectItem({ Item }: ProjectProps) {
               {/* //* project website */}
               {Item.projectWebsite !== "" || undefined ? (
                 <span>
-                  <Link href={Item.projectWebsite} target="_blank">
+                  <Link href={Item.projectWebsite} target="_blank" prefetch={false}>
                     <FaHome />
                   </Link>
                 </span>
@@ -119,7 +119,7 @@ export default function ProjectItem({ Item }: ProjectProps) {
               {/* // * pypi url */}
               {Item.pypiUrl !== "" || undefined ? (
                 <span>
-                  <Link href={Item.pypiUrl} target="_blank">
+                  <Link href={Item.pypiUrl} target="_blank" prefetch={false}>
                     <Image
                       src="/pypi.svg"
                       alt="pypi-logo"
