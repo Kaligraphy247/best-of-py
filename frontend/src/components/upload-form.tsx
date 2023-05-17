@@ -1,6 +1,6 @@
 import Select from "react-select";
 import { useParams } from "next/navigation";
-
+import { useState } from "react";
 
 async function getTags() {
   const res = await fetch("/api/get-tags");
@@ -17,6 +17,7 @@ async function getProjectData(title: string) {
 export default async function UpdateForm() {
   // get path param from url segment
   const params = useParams();
+  const [value, setValue] = useState<any>()
 
   // use params to fetch data from api
   const project = await getProjectData(params.project);
@@ -40,14 +41,10 @@ export default async function UpdateForm() {
     // prevent refresh on submit
     event.preventDefault();
 
-    // console.log(project.id) //! DEBUG
-    // user tag choices
-    let tagChoice = event.target.tags;
-
     // How tags are saved in the db
     let cleanTags: any = [];
     try {
-      tagChoice.forEach((element: any) => {
+      value?.forEach((element: any) => {
         cleanTags.push(element.value);
       });
     } catch (e) {}
@@ -272,6 +269,7 @@ export default async function UpdateForm() {
             isMulti
             name="tags"
             options={tagOptions}
+            onChange={(value) => setValue(value)}
             className="basic-multi-select"
             classNamePrefix="select"
           />

@@ -17,7 +17,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   const body = await request.json();
   const {rec_id, data} = body
-  // console.log(body.rec_id) //! DEBUG
+  // console.log(body) //! DEBUG
 
   // Xata accepts JSON Objects, so nothing special to do here.
   const record = await xata.db.projects.update(rec_id, data)
