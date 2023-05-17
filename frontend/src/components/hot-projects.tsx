@@ -1,4 +1,3 @@
-"use client"
 import ProjectItem, { ProjectProps } from "./project-item";
 import { getXataClient } from "@/utils/xata";
 

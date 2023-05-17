@@ -1,4 +1,3 @@
-"use client"
 import ProjectItem from "../../components/project-item";
 import { ProjectProps } from "../../components/project-item";
 import { getXataClient } from "@/utils/xata";
