@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Kaligraphy247-dqb2ur.us-east-1.xata.sh/db/my-database",
+  "codegen": {
+    "output": "src/utils/xata.ts"
+  }
+}

@@ -1,18 +1,27 @@
 import AddTagsForm from "@/components/add-tag";
-
+import { getXataClient } from "@/utils/xata";
 
 /** Fetch all tags */
+// async function getTags() {
+//   let result = await fetch("https://49m75b-8000.csb.app/api/get-all-tags", {mode: "no-cors"});
+//   if (!result.ok) {
+//     throw new Error("Failed to fetch Data");
+//     // more handling here
+//   }
+//   return result.json();
+// }
+
+
+
 async function getTags() {
-  let result = await fetch("https://49m75b-8000.csb.app/api/get-all-tags", {mode: "no-cors"});
-  if (!result.ok) {
-    throw new Error("Failed to fetch Data");
-    // more handling here
-  }
-  return result.json();
+  const xata = getXataClient();
+  const tags = await xata.db.tags.getAll()
+  // console.log(tags)
+  return tags
 }
 
-
 export default async function AddTags() {
+
   const tags = await getTags()
 
   return (

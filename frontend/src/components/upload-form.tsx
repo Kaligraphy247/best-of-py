@@ -1,27 +1,17 @@
-// "use client"
 import Select from "react-select";
 import { useParams } from "next/navigation";
-import { Modal } from "flowbite";
 
-async function fetchProjectData(project_title: string) {
-  let result = await fetch(
-    `https://49m75b-8000.csb.app/api/get-project?project_title=${project_title}`,
-    {mode: "no-cors"}
-  );
-  if (!result.ok) {
-    throw new Error("Failed to Fetch Data");
-  }
-  let data = result.json();
-  return data;
-}
 
 async function getTags() {
-  let result = await fetch("https://49m75b-8000.csb.app/api/get-all-tags");
-  if (!result.ok) {
-    throw new Error("Failed to fetch Data");
-    // more handling here
-  }
-  return result.json();
+  const res = await fetch("/api/get-tags");
+  const result = await res.json();
+  return result.tags;
+}
+
+async function getProjectData(title: string) {
+  const res = await fetch(`/api/update-project/?title=${title}`);
+  const result = await res.json();
+  return result.data;
 }
 
 export default async function UpdateForm() {
@@ -29,34 +19,95 @@ export default async function UpdateForm() {
   const params = useParams();
 
   // use params to fetch data from api
-  const project: ProjectItem = await fetchProjectData(params.project);
-  const tags: any = await getTags();
+  const project = await getProjectData(params.project);
 
-  // to get projects current options
+  // get projects current options
   let currentTagOptions: any = [];
-  project.tags?.forEach((element) => {
-    let opts = { value: element.tag, label: element.tag };
+  project.tags?.forEach((element: any) => {
+    let opts = { value: element, label: element };
     currentTagOptions.push(opts);
   });
 
   // to get all tags, which is used to populate Select `Tags`
+  const tags: any = await getTags();
   let tagOptions: any = [];
-
-  
   tags.forEach((element: any) => {
     let opts = { value: element.tag, label: element.tag };
     tagOptions.push(opts);
   });
 
+  async function handleSubmit(event: any) {
+    // prevent refresh on submit
+    event.preventDefault();
+
+    // console.log(project.id) //! DEBUG
+    // user tag choices
+    let tagChoice = event.target.tags;
+
+    // How tags are saved in the db
+    let cleanTags: any = [];
+    try {
+      tagChoice.forEach((element: any) => {
+        cleanTags.push(element.value);
+      });
+    } catch (e) {}
+
+    // console.log("CLEAN Tag", cleanTags); //! DEBUG
+
+    // Get data from form
+    const data = {
+      rec_id: project.id,
+      data: {
+        title: event.target.title.value,
+        projectUrl: event.target.title.value,
+        imageSrc:
+          event.target.imageSrc.value === ""
+            ? "/pypi-large.svg"
+            : event.target.imageSrc.value,
+        altText: event.target.altText.value,
+        githubUrl: event.target.githubUrl.value,
+        projectWebsite: event.target.projectWebsite.value,
+        pypiUrl: event.target.pypiUrl.value,
+        description: event.target.description.value,
+        tags: cleanTags,
+      },
+    };
+
+    // stringify data
+    const JSONdata = JSON.stringify(data);
+    // console.log(JSONdata); //! DEBUG
+
+    // API endpoint
+    const endpoint = "/api/update-project";
+    // options
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSONdata,
+    };
+
+    const response = await fetch(endpoint, options);
+    const result = await response.json();
+    if (result.ok) {
+      alert(`Project "${event.target.title.value}" has been updated.`);
+    } else {
+      alert(
+        `Project "${event.target.title.value}" may have not been updated, please confirm before closing this page.`
+      );
+    }
+  }
+
   return (
-    <form className="w-full max-w-lg mx-auto">
-      <h1 className="text-lg md:text-center pb-2 md:text-3xl font-medium md:mx-4 md:pb-4">
+    <form className="mx-auto w-full max-w-lg" onSubmit={handleSubmit}>
+      <h1 className="pb-2 text-lg font-medium md:mx-4 md:pb-4 md:text-center md:text-3xl">
         Update project: <span className="font-mono">{params.project}</span>
       </h1>
-      <div className="md:flex md:items-center mb-6">
+      <div className="mb-6 md:flex md:items-center">
         <div className="md:w-1/3">
           <label
-            className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+            className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0 md:text-right"
             htmlFor="title"
           >
             Title
@@ -64,7 +115,7 @@ export default async function UpdateForm() {
         </div>
         <div className="md:w-2/3">
           <input
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 px-4 py-2 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
             id="title"
             type="text"
             placeholder="Project title"
@@ -72,10 +123,10 @@ export default async function UpdateForm() {
           />
         </div>
       </div>
-      <div className="md:flex md:items-center mb-6">
+      <div className="mb-6 md:flex md:items-center">
         <div className="md:w-1/3">
           <label
-            className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+            className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0 md:text-right"
             htmlFor="imageSrc"
           >
             Image Source
@@ -83,18 +134,18 @@ export default async function UpdateForm() {
         </div>
         <div className="md:w-2/3">
           <input
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 px-4 py-2 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
             id="imageSrc"
-            type="url"
+            // type="url"
             placeholder="Image Link"
             defaultValue={project.imageSrc}
           />
         </div>
       </div>
-      <div className="md:flex md:items-center mb-6">
+      <div className="mb-6 md:flex md:items-center">
         <div className="md:w-1/3">
           <label
-            className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+            className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0 md:text-right"
             htmlFor="altText"
           >
             Alt Text
@@ -102,7 +153,7 @@ export default async function UpdateForm() {
         </div>
         <div className="md:w-2/3">
           <input
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 px-4 py-2 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
             id="altText"
             type="text"
             placeholder="Image altText"
@@ -110,10 +161,10 @@ export default async function UpdateForm() {
           />
         </div>
       </div>
-      <div className="md:flex md:items-center mb-6">
+      <div className="mb-6 md:flex md:items-center">
         <div className="md:w-1/3">
           <label
-            className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+            className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0 md:text-right"
             htmlFor="githubUrl"
           >
             Github
@@ -121,7 +172,7 @@ export default async function UpdateForm() {
         </div>
         <div className="md:w-2/3">
           <input
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 px-4 py-2 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
             id="githubUrl"
             type="url"
             placeholder="Github Repo"
@@ -129,10 +180,10 @@ export default async function UpdateForm() {
           />
         </div>
       </div>
-      <div className="md:flex md:items-center mb-6">
+      <div className="mb-6 md:flex md:items-center">
         <div className="md:w-1/3">
           <label
-            className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+            className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0 md:text-right"
             htmlFor="projectWebsite"
           >
             Website
@@ -140,7 +191,7 @@ export default async function UpdateForm() {
         </div>
         <div className="md:w-2/3">
           <input
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 px-4 py-2 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
             id="projectWebsite"
             type="url"
             placeholder="Project Homepage"
@@ -148,10 +199,10 @@ export default async function UpdateForm() {
           />
         </div>
       </div>
-      <div className="md:flex md:items-center mb-6">
+      <div className="mb-6 md:flex md:items-center">
         <div className="md:w-1/3">
           <label
-            className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+            className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0 md:text-right"
             htmlFor="pypiUrl"
           >
             PyPi
@@ -159,7 +210,7 @@ export default async function UpdateForm() {
         </div>
         <div className="md:w-2/3">
           <input
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 px-4 py-2 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
             id="pypiUrl"
             type="url"
             placeholder="PyPi Link"
@@ -167,10 +218,10 @@ export default async function UpdateForm() {
           />
         </div>
       </div>
-      <div className="md:flex md:items-center mb-6">
+      <div className="mb-6 md:flex md:items-center">
         <div className="md:w-1/3">
           <label
-            className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+            className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0 md:text-right"
             htmlFor="description"
           >
             Description
@@ -178,17 +229,17 @@ export default async function UpdateForm() {
         </div>
         <div className="md:w-2/3">
           <textarea
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 px-4 py-2 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
             id="description"
             placeholder="Project description"
             defaultValue={project.description}
           />
         </div>
       </div>
-      <div className="md:flex md:items-center mb-6">
+      <div className="mb-6 md:flex md:items-center">
         <div className="md:w-1/3">
           <label
-            className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+            className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0 md:text-right"
             htmlFor="current-tags"
           >
             Current Tags
@@ -206,10 +257,10 @@ export default async function UpdateForm() {
           />
         </div>
       </div>
-      <div className="md:flex md:items-center mb-6">
+      <div className="mb-6 md:flex md:items-center">
         <div className="md:w-1/3">
           <label
-            className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+            className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0 md:text-right"
             htmlFor="current-tags"
           >
             Add more Tags
@@ -231,8 +282,8 @@ export default async function UpdateForm() {
         <div className="md:w-2/3">
           <button
             // className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-            className="shadow bg-[#2b5a83] hover:bg-[#4a8eca] focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-            type="button"
+            className="focus:shadow-outline rounded bg-[#2b5a83] px-4 py-2 font-bold text-white shadow hover:bg-[#4a8eca] focus:outline-none"
+            type="submit"
           >
             Update Project
           </button>
@@ -240,21 +291,4 @@ export default async function UpdateForm() {
       </div>
     </form>
   );
-}
-
-interface ProjectItem {
-  title: string;
-  projectUrl: string;
-  imageSrc: string;
-  altText: string;
-  githubUrl: string;
-  projectWebsite: string;
-  pypiUrl: string;
-  description?: string;
-  tags?:
-    | {
-        tag: string;
-        tagUrl: string;
-      }[]
-    | undefined;
 }

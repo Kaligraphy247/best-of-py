@@ -41,3 +41,6 @@ frontend/package-lock.json
 # vscode
 **.vscode
 restore.py
+
+# env
+frontend/.env

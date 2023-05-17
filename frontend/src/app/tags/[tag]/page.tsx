@@ -1,6 +1,9 @@
 import { Metadata, ResolvingMetadata } from "next";
-import ProjectItem from "@/components/project-item";
 import { FaHashtag } from "react-icons/fa";
+import ProjectItem from "@/components/project-item";
+import { ProjectProps } from "@/components/project-item";
+import { getXataClient } from "@/utils/xata";
+
 
 type TagMetadataProps = {
   params: { tag: string };
@@ -25,7 +28,11 @@ export async function generateMetadata(
   };
 }
 
-export default function Tag({ params, searchParams }: TagMetadataProps) {
+export default async function Tag({ params, searchParams }: TagMetadataProps) {
+  const xata = getXataClient()
+  const projects: any = await xata.db.projects.getAll();
+  // console.log(projects)
+
   const example = [
     { tag: "GUI", tagUrl: "GUI-URL" },
     { tag: "Numpy", tagUrl: "Numpy-URL" },
@@ -88,12 +95,12 @@ export default function Tag({ params, searchParams }: TagMetadataProps) {
   return (
     <main>
       <div className="border mt-8 mx-4 mb-12 md:mx-12 lg:mx-40 xl:mx-72 bg-gray-50">
-        {/* <div className="border-b h-[920px]"> */}
-          {/* <h1 className="text-2xl text-center">Tags</h1>
-          <p>URL params?: {params.tag}</p> */}
-        {/* </div> */}
-        <ul className="">
-          {data.map(
+        {/* <div className="border-b h-[920px]">
+          <h1 className="text-2xl text-center">Tags</h1>
+          <p>URL params?: {params.tag}</p>
+        </div> */}
+        <ul>
+        {projects.map(
             ({
               title,
               projectUrl,
@@ -104,7 +111,7 @@ export default function Tag({ params, searchParams }: TagMetadataProps) {
               pypiUrl,
               description,
               tags,
-            }) => (
+            }: ProjectProps["Item"]) => (
               <ProjectItem
                 key={title}
                 Item={{

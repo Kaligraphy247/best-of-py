@@ -1,19 +1,12 @@
 import ProjectItem from "../../components/project-item";
 import { ProjectProps } from "../../components/project-item";
+import { getXataClient } from "@/utils/xata";
 
-async function getData() {
-  const res = await fetch("https://49m75b-8000.csb.app/api/get-all-projects");
-
-  // Handle errors
-  if (!res.ok) {
-    throw new Error("Failed to Fetch Data");
-  }
-  // return res regardless
-  return res.json();
-}
 
 export default async function Projects() {
-  const data = await getData();
+  const xata = getXataClient()
+  const projects: any = await xata.db.projects.getAll();
+  // console.log(records)
 
   const example = [
     { tag: "GUI", tagUrl: "GUI-URL" },
@@ -78,7 +71,7 @@ export default async function Projects() {
     <main className="min-h-screen relative">
       <div className="mx-4 mt-8 mb-16 md:mx-24 lg:mx-40 xl:mx-72 bg-gray-50">
         <ul className="border">
-          {data.map(
+          {projects.map(
             ({
               title,
               projectUrl,

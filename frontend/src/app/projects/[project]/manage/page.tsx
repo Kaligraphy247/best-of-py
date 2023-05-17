@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import UpdateForm from "@/components/upload-form";
+import RemoveProject from "@/components/remove-project";
 
 const tabItems = [
   /* @ts-expect-error Async Server Component */
   { title: `Update`, content: <UpdateForm /> },
-  { title: "Remove", content: "Remove Project" },
+  /* @ts-expect-error Async Server Component */
+  { title: "Remove", content: <RemoveProject /> },
 ];
 
 export default async function ManageProject() {
@@ -18,7 +20,7 @@ export default async function ManageProject() {
 
   return (
     <main className="bg-[#fcfcfc]">
-      <div className="mt-8 mx-4 md:mx-12 lg:mx-32 xl:mx-40 border pt-1 px-1 rounded mb-16">
+      <div className="mx-4 mb-16 mt-8 rounded border px-1 pt-1 md:mx-12 lg:mx-32 xl:mx-40">
         {/* TAB BEGINS */}
         <div className="border-t-0">
           {/* render tab header */}
@@ -27,10 +29,10 @@ export default async function ManageProject() {
               {tabItems.map((item, index: any) => (
                 <button
                   key={index}
-                  className={`py-1 px-3 ${
+                  className={`px-3 py-1 ${
                     activeTabIndex === index
-                      ? "border-b-0 bg-[#2b5a83] text-[#dadada] text-lg font-medium rounded"
-                      : "bg-gray-200 text-lg font-medium rounded"
+                      ? "rounded border-b-0 bg-[#2b5a83] text-lg font-medium text-[#dadada]"
+                      : "rounded bg-gray-200 text-lg font-medium"
                   }`}
                   onClick={() => handleTabClick(index)}
                 >
@@ -39,7 +41,7 @@ export default async function ManageProject() {
               ))}
             </div>
             {/* // render the active tab content */}
-            <div className="p-6 border-gray-200">
+            <div className="border-gray-200 p-6">
               {tabItems[activeTabIndex].content}
             </div>
           </div>
