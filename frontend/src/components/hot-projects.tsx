@@ -1,7 +1,9 @@
+"use client"
 import ProjectItem, { ProjectProps } from "./project-item";
 import { getXataClient } from "@/utils/xata";
 
 async function getData() {  
+  //! previous fix. Will be used as fallback.
   const xata = getXataClient()
   const res =  await xata.db.projects.getAll()
   return res

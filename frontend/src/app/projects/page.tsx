@@ -1,16 +1,16 @@
-// "use client"
+"use client"
 import ProjectItem from "../../components/project-item";
 import { ProjectProps } from "../../components/project-item";
 import { getXataClient } from "@/utils/xata";
 
-async function getData() {  
-  const xata = getXataClient()
-  const res =  await xata.db.projects.getAll()
-  return res
+async function getData() {
+  const xata = getXataClient();
+  const res = await xata.db.projects.getAll();
+  return res;
 }
 
 export default async function Projects() {
-  const projects: any = await getData()
+  const projects: any = await getData();
   // console.log(projects)
 
   const example = [
@@ -73,8 +73,8 @@ export default async function Projects() {
     },
   ];
   return (
-    <main className="min-h-screen relative">
-      <div className="mx-4 mt-8 mb-16 md:mx-24 lg:mx-40 xl:mx-72 bg-gray-50">
+    <main className="relative min-h-screen">
+      <div className="mx-4 mb-16 mt-8 bg-gray-50 md:mx-24 lg:mx-40 xl:mx-72">
         <ul className="border">
           {projects.map(
             ({
