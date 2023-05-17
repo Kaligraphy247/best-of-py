@@ -1,19 +1,15 @@
 // "use client"
 import ProjectItem from "../../components/project-item";
 import { ProjectProps } from "../../components/project-item";
-// import { getXataClient } from "@/utils/xata";
+import { getXataClient } from "@/utils/xata";
 
-async function getData() {
-  // const res = await fetch("/api/get-projects")
-  // temporary fix
-  //? https://github.com/vercel/next.js/issues/48344
-  const res = await import("../api/get-projects/route")
-  const result = await (await res.GET()).json()
-  return result.projects
+async function getData() {  
+  const xata = getXataClient()
+  const res =  await xata.db.projects.getAll()
+  return res
 }
 
 export default async function Projects() {
-  // const xata = getXataClient()
   const projects: any = await getData()
   // console.log(projects)
 
