@@ -20,7 +20,7 @@ export default async function AddProjectForm(props: any) {
       });
     } catch (e) {}
 
-    console.log("CLEAN Tag", cleanTags); //! DEBUG
+    // console.log("CLEAN Tag", cleanTags); //! DEBUG
 
     // Get data from form
     const data = {

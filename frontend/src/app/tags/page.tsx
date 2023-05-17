@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FaHome } from "react-icons/fa";
 import Link from "next/link";
 import { getXataClient } from "@/utils/xata";
+import { cookies } from "next/headers";
 
 
 export type TagType = {
@@ -14,6 +15,11 @@ export default async function Tags() {
   const xata = getXataClient();
 
   const tags = await xata.db.tags.getAll();
+
+    //! forcing/opting for SSR
+    const cookieStore = cookies()
+    // console.log("Cookie Store: ", cookieStore.getAll()) //? workaround
+  
 
   return (
     <main className="min-h-screen relative">

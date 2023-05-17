@@ -1,11 +1,11 @@
 import ProjectItem, { ProjectProps } from "./project-item";
 import { getXataClient } from "@/utils/xata";
+import { cookies } from "next/headers";
 
-async function getData() {  
-  //! previous fix. Will be used as fallback.
-  const xata = getXataClient()
-  const res =  await xata.db.projects.getAll()
-  return res
+async function getData() {
+  const xata = getXataClient();
+  const res = await xata.db.projects.getAll();
+  return res;
 }
 
 /**
@@ -15,7 +15,10 @@ async function getData() {
  */
 export default async function HotProjects() {
   const projects: any = await getData();
-  // console.log(projects)
+
+  //! forcing/opting for SSR
+  const cookieStore = cookies();
+  // console.log("Cookie Store: ", cookieStore.getAll()) //? workaround
 
   const example = [
     { tag: "GUI", tagUrl: "GUI-URL" },
@@ -175,7 +178,6 @@ export default async function HotProjects() {
             />
           )
         )}
-
 
         {/* more  */}
         {projects.map(

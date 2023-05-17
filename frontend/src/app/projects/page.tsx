@@ -1,6 +1,7 @@
 import ProjectItem from "../../components/project-item";
 import { ProjectProps } from "../../components/project-item";
 import { getXataClient } from "@/utils/xata";
+import { cookies } from "next/headers";
 
 async function getData() {
   const xata = getXataClient();
@@ -10,7 +11,10 @@ async function getData() {
 
 export default async function Projects() {
   const projects: any = await getData();
-  // console.log(projects)
+
+  //! forcing/opting for SSR
+  const cookieStore = cookies();
+  // console.log("Cookie Store: ", cookieStore.getAll()) //? workaround
 
   const example = [
     { tag: "GUI", tagUrl: "GUI-URL" },

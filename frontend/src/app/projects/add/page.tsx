@@ -4,7 +4,6 @@ import { getXataClient } from "@/utils/xata";
 async function getTags() {
   const xata = getXataClient();
   const tags = xata.db.tags.getAll()
-  // console.log(tags) //! DEBUG
   return tags
 }
 
