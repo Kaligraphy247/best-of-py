@@ -1,4 +1,4 @@
-import AddProjectForm, { GetTokenComponent } from "@/components/add-project";
+import AddProjectForm from "@/components/add-project";
 import { getXataClient } from "@/utils/xata";
 
 async function getTags() {
@@ -20,7 +20,6 @@ export default async function AddProject() {
   return (
     <main className="bg-[#fcfcfc]">
       <div className="mx-4 mb-16 mt-8 rounded border p-2 md:mx-12 lg:mx-32 xl:mx-40">
-        {/* <GetTokenComponent /> */}
         {/* @ts-expect-error Async Server Component */}
         <AddProjectForm options={tagOptions} />
       </div>
